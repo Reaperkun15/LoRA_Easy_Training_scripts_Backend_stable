@@ -81,7 +81,7 @@ def setup_accelerate(platform: str) -> None:
 def setup_venv(venv_pip):
     torch_deps = [
         "nvidia-cudnn-cu12==9.1.1.17", # fix non-existent 9.1.0.70
-        "filelock", "typing-extensions", "sympy", "networkx", "jinja2", "fsspec", "numpy", "pillow",
+        "filelock", "typing-extensions==4.15.0", "sympy", "networkx", "jinja2", "fsspec", "numpy", "pillow",
         "nvidia-cuda-nvrtc-cu12==12.4.127",
         "nvidia-cuda-runtime-cu12==12.4.127",
         "nvidia-cuda-cupti-cu12==12.4.127",
