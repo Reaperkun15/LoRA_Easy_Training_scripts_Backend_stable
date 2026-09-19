@@ -81,7 +81,7 @@ def setup_accelerate(platform: str) -> None:
 def setup_venv(venv_pip):
     torch_deps = [
         "nvidia-cudnn-cu12==9.1.1.17", # fix non-existent 9.1.0.70
-        "filelock", "typing-extensions==4.15.0", "sympy", "networkx", "jinja2", "fsspec", "numpy", "pillow",
+        "filelock", "typing-extensions", "sympy", "networkx", "jinja2", "fsspec", "numpy", "pillow",
         "nvidia-cuda-nvrtc-cu12==12.4.127",
         "nvidia-cuda-runtime-cu12==12.4.127",
         "nvidia-cuda-cupti-cu12==12.4.127",
@@ -95,6 +95,10 @@ def setup_venv(venv_pip):
         "nvidia-nvjitlink-cu12==12.4.127",
         "triton==3.1.0",
     ]
+    subprocess.check_call(
+        f"{venv_pip} install --upgrade pip",
+        shell=PLATFORM == "linux",
+    )
     subprocess.check_call(
         f"{venv_pip} install -U torch==2.5.1 torchvision==0.20.1 --no-deps --index-url https://download.pytorch.org/whl/cu124",
         shell=PLATFORM == "linux",
